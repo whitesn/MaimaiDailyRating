@@ -5730,8 +5730,8 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-.nopadding {
-  padding: 0 !important;
-  margin: 0 !important; }
+@media (max-width: 480px) {
+  body {
+    font-size: 10px; } }
 
 /*# sourceMappingURL=app.css.map */
