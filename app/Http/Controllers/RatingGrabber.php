@@ -44,7 +44,7 @@ class RatingGrabber extends Controller
 
         if( $pos === FALSE )
         {
-            echo( "[ERROR]: Unable to find SID, check if maimai-net is updated.\n");
+            echo( "[ERROR]: Unable to find SID after login attempt, check if maimai-net is updated.\n");
             return false;
         }
 
@@ -154,18 +154,22 @@ class RatingGrabber extends Controller
         $grabbers = Grabber::all();
 
         $grab_status = array();
+        echo "[DEBUG]: == Arcade List == \n";
         foreach( $arcades as $arcade )
         {
             $grab_status[$arcade->id] = false;
-            echo "[DEBUG]: Added arcade [" . $arcade->name . "]\n";
+            echo $arcade->name . "\n";
         }
+        echo "=========================== \n";
 
         foreach( $grabbers as $grabber )
         {
+            echo "[DEBUG]: Logging in with account : " . $grabber->username . "\n";
+
             if( self::login( $grabber ) )
             {
                 $home_arcade = self::get_home_arcade( $grabber );
-                echo "[DEBUG]: Checking arcade: [" . $home_arcade . "]\n";
+                echo "[DEBUG]: Checking arcade: [" . $home_arcade . "]...\n";
                 $arcade = Arcade::where('name', '=', $home_arcade);
 
                 if( $arcade->count() <= 0 )
@@ -182,13 +186,17 @@ class RatingGrabber extends Controller
                 }
                 else
                 {
-                    echo "[DEBUG]: Adding player database from arcade: " . $home_arcade;
+                    echo "[DEBUG]: Adding player database from arcade: " . $home_arcade . "\n";
                     self::add_player_database( $arcade_id );
                     $grab_status[$arcade_id] = true;
                     $now = new DateTime('now');
                     DB::table('meta')->where('name', '=', 'LAST_UPDATE_TIME')
                                      ->update(['value' => $now->format( 'd-m-Y H:i:s')]);
                 }
+            }
+            else
+            {
+                echo "[DEBUG]: Failed to login with account: " . $grabber->username . ", skipping...\n";
             }
         }
     }
