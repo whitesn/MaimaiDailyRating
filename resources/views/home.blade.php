@@ -9,49 +9,51 @@
 <body>
     <br/>
 
-    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+    <div class="row col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
         <div class="alert alert-success" role="alert">
             <strong>Last Update:</strong> {{ $last_update_date }}
         </div>
     </div>
 
-    <div class="col-lg-6 col-md-6 col-xs-12 nopadding">
-    <table class="table table-striped">
-        <thead class="thead-inverse">
-            <tr>
-                <th class="text-center">#</th>
-                <th class="text-center">Player Name</th>
-                <th class="text-center">Rating</th>
-                <th class="text-center">Arcade</th>
-            </tr>
-        </thead>
-        <?php $i = 1 ?>
-        @foreach( $players as $player )
-            <tr>
-                <td class="text-center">{{ $i++ }}</td>
-                <td class="text-center">{{ $player->name }}</td>
-                <td class="text-center">{{ $player->rating }}</td>
-                <td class="text-center">{{ $arcades[$player->arcade_id] }}</td>
-            </tr>
-        @endforeach
-    </table>
-    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-12">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Player Name</th>
+                    <th class="text-center">Rating</th>
+                    <th class="text-center">Arcade</th>
+                </tr>
+            </thead>
+            <?php $i = 1 ?>
+            @foreach( $players as $player )
+                <tr>
+                    <td class="text-center">{{ $i++ }}</td>
+                    <td class="text-center">{{ $player->name }}</td>
+                    <td class="text-center">{{ $player->rating }}</td>
+                    <td class="text-center">{{ $arcades[$player->arcade_id] }}</td>
+                </tr>
+            @endforeach
+        </table>
+        </div>
 
-    <div class="col-lg-6 col-md-6 col-xs-12 nopadding">
-    <table class="table table-striped">
-        <thead class="thead-inverse">
-            <tr>
-                <th class="text-center">Arcade Name</th>
-                <th class="text-center">Rating 13 Count</th>
-            </tr>
-        </thead>
-        @foreach( $arcades as $arcade_id => $name )
-            <tr>
-                <td class="text-center">{{ $name }}</td>
-                <td class="text-center">{{ $rating_13_data[$arcade_id] }}</td>
-            </tr>
-        @endforeach
-    </table>
+        <div class="col-lg-6 col-md-6 col-xs-12">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th class="text-center">Arcade Name</th>
+                    <th class="text-center">Rating 13 Count</th>
+                </tr>
+            </thead>
+            @foreach( $arcades as $arcade_id => $name )
+                <tr>
+                    <td class="text-center">{{ $name }}</td>
+                    <td class="text-center">{{ $rating_13_data[$arcade_id] }}</td>
+                </tr>
+            @endforeach
+        </table>
+        </div>
     </div>
 
     <div class="row col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
