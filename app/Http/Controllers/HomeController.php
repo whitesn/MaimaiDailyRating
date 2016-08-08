@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function dashboard()
     {
         $rating_13_counts = array();
-        $top_100 = Player::orderBy('rating', 'desc')->take( 100 )->get();
+        $top_players = Player::orderBy('rating', 'desc')->take( 300 )->get();
 
         $arcades = array();
         $arcades_data = Arcade::all();
@@ -25,7 +25,7 @@ class HomeController extends Controller
             $rating_13_counts[$arcade->id] = 0;
         }
 
-        foreach( $top_100 as $player )
+        foreach( $top_players as $player )
         {
             if( $player->rating >= 13 )
             {
@@ -33,7 +33,7 @@ class HomeController extends Controller
             }
         }
 
-        $data['players'] = $top_100;
+        $data['players'] = $top_players;
         $data['arcades'] = $arcades;
         $data['rating_13_data'] = $rating_13_counts;
         $data['last_update_date'] = DB::table('meta')->where('name', '=', 'LAST_UPDATE_TIME')->first()->value;
