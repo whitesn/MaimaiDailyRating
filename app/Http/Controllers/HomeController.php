@@ -38,6 +38,6 @@ class HomeController extends Controller
         $data['rating_13_data'] = $rating_13_counts;
         $data['last_update_date'] = DB::table('meta')->where('name', '=', 'LAST_UPDATE_TIME')->first()->value;
 
-        return view( 'top100', $data );
+        return view( 'home', $data );
     }
 }

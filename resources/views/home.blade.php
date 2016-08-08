@@ -10,19 +10,6 @@
     <br/>
 
     <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
-        <div class="alert alert-warning fade in" role="alert">
-            <strong>Notice:</strong> Bila ada saran fitur (yang bisa saya kerjakan) atau laporan error bisa tolong diemailkan ke : dylan@whitesn.net
-
-            <br><br>
-
-            <strong></strong>Situs ini dihost dengan uang yang keluar dari kantong saya sendiri. Bila ada keikhlasan untuk donasi sesedikitnya 10,000 rupiah saja akan
-            sangat membantu (contact me <a href="https://www.facebook.com/whitesnlol">here</a>).
-
-            <br><br>
-
-            <strong>Note:</strong> Big thanks buat yang minjemin accountnya dari Arcade masing-masing :)
-        </div>
-
         <div class="alert alert-success" role="alert">
             <strong>Last Update:</strong> {{ $last_update_date }}
         </div>
@@ -65,6 +52,14 @@
             </tr>
         @endforeach
     </table>
+    </div>
+
+    <div class="row col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12">
+        <div class="alert alert-warning fade in" role="alert">
+            <strong>Notice:</strong> Bila ada saran fitur atau laporan error bisa kontak saya melalui <a href="https://www.facebook.com/whitesnlol">Facebook</a>.
+            <br>
+            Source Code untuk Daily Rating dapat dilihat di <a href="https://github.com/whitesn/MaimaiDailyRating">sini</a> (feel free to make PR if necessary).
+        </div>
     </div>
 </body>
 </html>
