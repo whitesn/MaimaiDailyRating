@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Indonesia Maimai Daily Top 100</title>
+    <title>Indonesia Maimai Hourly Rating</title>
     <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
     <link href="{{ url('/css/app.css') }}" rel="stylesheet" type="text/css">
     <script src="{{ url('/js/app.js') }}"></script>
@@ -60,7 +60,7 @@
             <div class="alert alert-warning fade in" role="alert">
                 <strong>Notice:</strong> Bila ada saran fitur atau laporan error bisa kontak saya melalui <a href="https://www.facebook.com/whitesnlol">Facebook</a>.
                 <br>
-                Source Code untuk Daily Rating dapat dilihat di <a href="https://github.com/whitesn/MaimaiDailyRating">sini</a> (feel free to make PR if necessary).
+                Source Code untuk Maimai Live Rating dapat dilihat di <a href="https://github.com/whitesn/MaimaiLiveRating">sini</a> (feel free to make PR if necessary).
             </div>
         </div>
     </div>
