@@ -69,17 +69,17 @@ class RatingGrabber extends Controller
 
     private function get_home_arcade( $grabber )
     {
-        $res = $this->client->get( 'https://maimai-net.com/maimai-mobile/data.html?sid=' . $this->active_sid, [
+        $res = $this->client->get( 'https://maimai-net.com/maimai-mobile/ranking.html?kind=7&sub=2&sid=' . $this->active_sid, [
             'cookies' => $this->jar,
             'allow_redirects' => true
         ]);
 
         $body = $res->getBody();
-        $pos = strpos( $body, "/mai/img/deta_shop_pink.png" );
-        $pos = strpos( $body, "<font class=\"blue\">", $pos ) + strlen( "<font class=\"blue\">" );
-        $pos2 = strpos( $body, "</font>", $pos );
+        $pos = strpos( $body, "<div class=\"data_midashi\">" ) + strlen( "<div class=\"data_midashi\">" );
+        $pos2 = strpos( $body, "</div>", $pos );
 
-        return substr( $body, $pos, $pos2 - $pos );
+        $store = substr( $body, $pos, $pos2 - $pos );
+        return trim( $store );
     }
 
     private function clear_player_database()
