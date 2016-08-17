@@ -101,6 +101,12 @@ class RatingGrabber extends Controller
         $pos2 = strpos( $body, "</table>", $pos1 );
         $table_data = substr( $body, $pos1, $pos2 - $pos1 );
 
+        if( $pos1 === FALSE )
+        {
+            echo "[DEBUG]: Failed to get the proper page of rating, skipping...";
+            return;
+        }
+
         $records = explode( "<tr>", $table_data );
         array_shift( $records ); // Delete the first record, which is the table head
 

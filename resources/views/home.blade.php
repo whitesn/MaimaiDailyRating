@@ -26,13 +26,12 @@
                         <th class="text-center">Arcade</th>
                     </tr>
                 </thead>
-                <?php $i = 1 ?>
                 @foreach( $players as $player )
                     <tr>
-                        <td class="text-center">{{ $i++ }}</td>
-                        <td class="text-center">{{ $player->name }}</td>
-                        <td class="text-center">{{ $player->rating }}</td>
-                        <td class="text-center">{{ $arcades[$player->arcade_id] }}</td>
+                        <td class="text-center">{{ $player['rank'] }}</td>
+                        <td class="text-center">{{ $player['player']->name }}</td>
+                        <td class="text-center">{{ $player['player']->rating }}</td>
+                        <td class="text-center">{{ $arcades[$player['player']->arcade_id] }}</td>
                     </tr>
                 @endforeach
             </table>
