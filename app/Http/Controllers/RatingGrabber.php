@@ -91,7 +91,7 @@ class RatingGrabber extends Controller
     {
         $rating_data = array();
 
-        $res = $this->client->get( 'https://maimai-net.com/maimai-mobile/ranking.html?kind=7&sub=2&sid=' . $this->active_sid, [
+        $res = $this->client->get( 'https://maimai-net.com/maimai-mobile/ranking.html?kind=20&sub=2&sid=' . $this->active_sid, [
             'cookies' => $this->jar,
             'allow_redirects' => true
         ]);
