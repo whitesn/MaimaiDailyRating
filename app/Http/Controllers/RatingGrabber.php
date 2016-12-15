@@ -121,6 +121,7 @@ class RatingGrabber extends Controller
             $end_pos = strpos( $record, "</td>", $start_pos );
 
             $player_name = substr( $record, $start_pos, $end_pos - $start_pos );
+			$player_name = strip_tags( $player_name );
 
             /* Get the rating */
             $str_delimiter = "<td class=\"score\" style=\"text-align:right; padding-right:50px\">";
