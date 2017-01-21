@@ -43,13 +43,13 @@
                 <thead class="thead-inverse">
                     <tr>
                         <th class="text-center">Arcade Name</th>
-                        <th class="text-center">Rating 13 Count</th>
+                        <th class="text-center">Rating 14 Count</th>
                     </tr>
                 </thead>
                 @foreach( $arcades as $arcade_id => $name )
                     <tr>
                         <td class="text-center">{{ $name }}</td>
-                        <td class="text-center">{{ $rating_13_data[$arcade_id] }}</td>
+                        <td class="text-center">{{ $top_raters_count[$arcade_id] }}</td>
                     </tr>
                 @endforeach
             </table>

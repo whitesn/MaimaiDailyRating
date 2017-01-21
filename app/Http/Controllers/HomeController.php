@@ -9,12 +9,13 @@ use DB;
 use App\Http\Requests;
 use App\Player;
 use App\Arcade;
+use Config;
 
 class HomeController extends Controller
 {
     public function dashboard()
     {
-        $rating_13_counts = array();
+        $top_raters_count = [];
         $top_players = Player::orderBy('rating', 'desc')->take( 300 )->get();
 		$players = [];
 		
@@ -51,20 +52,20 @@ class HomeController extends Controller
         foreach( $arcades_data as $arcade )
         {
             $arcades[$arcade->id] = $arcade->name;
-            $rating_13_counts[$arcade->id] = 0;
+            $top_raters_count[$arcade->id] = 0;
         }
 
         foreach( $top_players as $player )
         {
-            if( $player->rating >= 13 )
+            if( $player->rating >= Config::get('mdr.top_raters_threshold') )
             {
-                $rating_13_counts[$player->arcade_id]++;
+                $top_raters_count[$player->arcade_id]++;
             }
         }
 
         $data['players'] = $players;
         $data['arcades'] = $arcades;
-        $data['rating_13_data'] = $rating_13_counts;
+        $data['top_raters_count'] = $top_raters_count;
         $data['last_update_date'] = DB::table('meta')->where('name', '=', 'LAST_UPDATE_TIME')->first()->value;
 
         return view( 'home', $data );
